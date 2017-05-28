@@ -1,5 +1,5 @@
 from nose.tools import *
-import ex50
+import gothonweb
 
 def setup():
 	print("SETUP")

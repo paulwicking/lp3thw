@@ -11,7 +11,7 @@ config = {
 	'author_email': 'my email',
 	'version': '0.1'
 	'install_requires': ['nose'],
-	'packages': ['ex50'],
+	'packages': ['gothonweb'],
 	'scripts': [],
 	'name': 'project name'
 }
