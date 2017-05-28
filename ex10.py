@@ -13,3 +13,9 @@ print(tabby_cat)
 print(persian_cat)
 print(backslash_cat)
 print(fat_cat)
+
+if "test" in fat_cat:
+    print("found test")
+else:
+    print("did not find test")
+
