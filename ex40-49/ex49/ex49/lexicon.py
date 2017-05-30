@@ -5,66 +5,23 @@ def scan(words_to_scan):
     """
     words = words_to_scan.split()
     word_pairs = []
-    found = False
-
-    # Our word lists _must_ be all lower-case
-    # directions = ['north', 'south', 'east', 'west']
-    # verbs = ['go', 'stop', 'kill', 'eat']
-    # stop_words = ['the', 'in', 'of', 'from', 'at', 'it']
-    # nouns = ['door', 'bear', 'princess', 'cabinet']
 
     dictionary = {'north': 'direction', 'south': 'direction', 'east': 'direction', 'west': 'direction',
                   'go': 'verb', 'stop': 'verb', 'kill': 'verb', 'eat': 'verb',
-                  'the': 'stop_word', 'in': 'stop_word', 'of': 'stop_word', 'from': 'stop_word', 'at': 'stop_word',
-                  'it': 'stop_word',
+                  'the': 'stop', 'in': 'stop', 'of': 'stop', 'from': 'stop', 'at': 'stop', 'it': 'stop',
                   'door': 'noun', 'bear': 'noun', 'princess': 'noun', 'cabinet': 'noun'}
 
+    def convert_to_number(string):
+        try:
+            return int(string)
+        except ValueError:
+            return None
+
     for word in words:
-        for key, value in dictionary:
-            if word.lower() == key:
-                word_pairs.append(tuple(value, key))
-            elif word.isdigit():
-                word_pairs.append(tuple('number', word))
-            elif not found:
-                word_pairs.append(tuple('error', word))
+        if not convert_to_number(word):
+            result = dictionary.get(word.lower(), 'error')
+            word_pairs.append((result, word))
+        else:
+            word_pairs.append(('number', word))
 
     return word_pairs
-
-"""
-OLD CODE:
-
-    for word in words:
-        found = False
-        for key, value in dictionary:
-            if word.lower() == key:
-                word_pairs.append(tuple(value, key))
-                found = True
-                break
-            else:
-                continue
-
-        for item in verbs:
-            if word.lower() == item:
-                word_pairs.append(tuple('verb', item))
-                found = True
-                break
-            else:
-                continue
-
-        for item in stop_words:
-            if word.lower() == item:
-                word_pairs.append(tuple('stop', item))
-                found = True
-                break
-            else:
-                continue
-
-        for item in nouns:
-            if word.lower() == item:
-                word_pairs.append(tuple('noun', item))
-                found = True
-                break
-            else:
-                continue
-
-"""
