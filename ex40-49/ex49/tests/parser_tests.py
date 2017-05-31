@@ -34,14 +34,10 @@ def test_parse_subject():
 
 
 def test_parse_sentence():
-    pass
-"""
+    word_list = scan("eat princess")
+    sentence = parse_sentence(word_list)
+
     # TODO: Fix this test.
-    assert_equal(parse_sentence([('verb', 'run')]), [('verb', 'run')])
-    test_sentence = parse_sentence([('verb', 'run'),
-            ('direction', 'north'),
-            ('error', 'IAS')])
-    assert_equal(test_sentence, [('verb', 'run'),
-        ('direction', 'north'),
-        ('error', 'IAS')])
-"""
+    assert_equal(sentence.subject, 'player')
+    assert_equal(sentence.verb, 'eat')
+    assert_equal(sentence.object, 'princess')
