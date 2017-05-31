@@ -20,8 +20,10 @@ def scan(words_to_scan):
     for word in words:
         if not convert_to_number(word):
             result = dictionary.get(word.lower(), 'error')
+            # yield word_pairs((result, word))
             word_pairs.append((result, word))
         else:
+            # yield(('number', word))
             word_pairs.append(('number', word))
 
     return word_pairs
