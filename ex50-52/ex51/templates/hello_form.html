@@ -1,9 +1,8 @@
-<html>
-<head>
-    <title>Sample web form</title>
-</head>
-<body>
-<h1>Fill in this form</h1>
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Fill Out This Form</h1>
 
 <form action"/hello" method="POST">
     A Greeting: <input type="text" name="greet">
@@ -12,5 +11,5 @@
     <br />
     <input type="submit">
 </form>
-</body>
-</html>
+
+{% endblock %}
